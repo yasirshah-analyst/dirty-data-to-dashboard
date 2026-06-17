@@ -273,7 +273,7 @@ The dataset was intentionally populated using SQL `CASE WHEN` statements and `ge
 - Flagged invalid phone records
 
 ```excel
-=if(C2="invalidemail.com","Invalid_Format",if(C2="test@test.com","Test/Fake_Email","Valid"))
+=IF(E2="NULL","Missing",IF((LEN(SUBSTITUTE(E2="-",""))<>11,"Invalid",E2))
 ```
 
 ### Cleaning Evidence
