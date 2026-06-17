@@ -208,14 +208,11 @@ The dataset was intentionally populated using SQL `CASE WHEN` statements and `ge
 
 ### Issues Found
 
-- Leading and trailing spaces
-- Repeated names
+- Leading spaces
 
 ### Actions Taken
 
 - Removed extra spaces using `TRIM()`
-- Standardized name formatting
-- Verified repeated names using ID and Email
 
 ### Formula Used
 
