@@ -245,7 +245,7 @@ The dataset was intentionally populated using SQL `CASE WHEN` statements and `ge
 ### Formula Used
 
 ```excel
-=TRIM(B2)
+=if(C2="invalidemail.com","Invalid_Format",if(C2="test@test.com","Test/Fake_Email","Valid"))
 ```
   
 ### Cleaning Evidence
