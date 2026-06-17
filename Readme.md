@@ -187,10 +187,6 @@ The dataset was intentionally populated using SQL `CASE WHEN` statements and `ge
 | Signup Date | Mixed date formats |
 | Amount | Non-numeric values and outliers |
 
-### SQL Script
-
-`SQL/customers_dirty_creation.sql`
-
 ---
 
 # 2️⃣ Excel Data Cleaning Process
