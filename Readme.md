@@ -1,12 +1,12 @@
-# SQL Customer Data Cleaning Project
+# SQL Dirty Data Generation & Excel Data Cleaning Project
 
 ## 📌 Project Overview
 
-This project demonstrates an end-to-end data cleaning workflow using SQL and Excel.
+This project demonstrates an end-to-end data quality workflow using SQL and Excel.
 
-A deliberately messy customer dataset was first generated in PostgreSQL using SQL scripts containing common real-world data quality issues. The dataset was then exported to Excel, where it was cleaned, validated, and transformed into an analysis-ready dataset.
+First, a dirty customer dataset containing common real-world data quality issues was generated in PostgreSQL using SQL scripts. The dataset was then exported to Excel, where a complete data cleaning process was performed to identify, correct, and validate data quality problems.
 
-The project showcases practical data cleaning techniques used by data analysts to improve data quality and ensure accurate reporting and analysis.
+The project showcases both data generation and data cleaning skills commonly used by data analysts when preparing datasets for reporting, dashboard creation, and business analysis.
 
 ---
 
@@ -14,7 +14,7 @@ The project showcases practical data cleaning techniques used by data analysts t
 
 - Generate a realistic dirty customer dataset using SQL.
 - Simulate common data quality issues found in business datasets.
-- Identify and clean inconsistent, incomplete, and invalid records in Excel.
+- Identify and clean inconsistent, incomplete, and invalid records.
 - Standardize text, dates, and numeric fields.
 - Handle missing values, duplicates, and formatting issues.
 - Produce a clean dataset suitable for analysis and reporting.
@@ -35,7 +35,7 @@ The dataset contains customer information including:
 - Signup Date
 - Amount
 
-A total of 500 records were generated with intentional data quality issues for cleaning practice.
+A total of **500 records** were generated with intentional data quality issues for cleaning practice.
 
 ---
 
@@ -72,181 +72,10 @@ sql-customer-dirty-data-generator/
 │
 └── README.md
 ```
----
-
-```
-
-## 🏗️ Create Table
-
-```sql
--- =========================================================
--- CREATE DIRTY CUSTOMER TABLE
--- =========================================================
-
-CREATE TABLE customers_dirty (
-    id SERIAL PRIMARY KEY,
-    name TEXT,
-    email TEXT,
-    phone TEXT,
-    city TEXT,
-    country TEXT,
-    signup_date TEXT,
-    amount TEXT
-);
-```
----
-
-## 📥 Insert Dirty Data
-
--- =========================================================
--- INSERT MESSY CUSTOMER DATA
--- =========================================================
-
-```sql
-INSERT INTO customers_dirty (
-    name,
-    email,
-    phone,
-    city,
-    country,
-    signup_date,
-    amount
-)
-
-SELECT
-
-    -- =========================
-    -- MESSY NAMES
-    -- =========================
-    CASE 
-        WHEN i % 10 = 0 THEN '  Ali Khan  '
-        WHEN i % 7 = 0 THEN 'Sara Ahmed'
-        ELSE 'User ' || i
-    END,
-
-    -- =========================
-    -- INVALID EMAILS
-    -- =========================
-    CASE 
-        WHEN i % 15 = 0 THEN 'invalidemail.com'
-        WHEN i % 9 = 0 THEN 'test@test.com'
-        ELSE 'user' || i || '@gmail.com'
-    END,
-
-    -- =========================
-    -- MESSY PHONE NUMBERS
-    -- =========================
-    CASE 
-        WHEN i % 12 = 0 THEN NULL
-        WHEN i % 5 = 0 THEN '123-456-789'
-        ELSE '03' || (100000000 + i)::TEXT
-    END,
-
-    -- =========================
-    -- INCONSISTENT CITY NAMES
-    -- =========================
-    CASE 
-        WHEN i % 6 = 0 THEN 'karachi'
-        WHEN i % 8 = 0 THEN 'LAHORE'
-        WHEN i % 11 = 0 THEN ''
-        ELSE 'Islamabad'
-    END,
-
-    -- =========================
-    -- WRONG COUNTRY VALUES
-    -- =========================
-    CASE 
-        WHEN i % 10 = 0 THEN 'IND'
-        ELSE 'Pakistan'
-    END,
-
-    -- =========================
-    -- MESSY DATE FORMATS
-    -- =========================
-    CASE 
-        WHEN i % 13 = 0 THEN '12-05-2023'
-        ELSE '2023-01-' || ((i % 28)+1)
-    END,
-
-    -- =========================
-    -- OUTLIERS + TEXT VALUES
-    -- =========================
-    CASE 
-        WHEN i % 20 = 0 THEN '999999'
-        WHEN i % 17 = 0 THEN 'abc'
-        ELSE (100 + i)::TEXT
-    END
-
-FROM generate_series(1,500) i;
-
--- =========================================================
--- 13. FINAL CLEANED DATA PREVIEW
--- =========================================================
-
-select * 
-from customers_dirty;
-```
----
-
-## Raw Data
-
-[View Raw Dataset](Data/Raw/customers_dirty.csv)
 
 ---
 
-
-## ⚠️ Simulated Data Quality Issues
-
-| Column | Issues Introduced |
-|----------|----------|
-| Name | Extra spaces, repeated names |
-| Email | Invalid and duplicate emails |
-| Phone | Missing values and invalid formats |
-| City | Inconsistent capitalization and blank values |
-| Country | Incorrect country codes |
-| Signup Date | Mixed date formats |
-| Amount | Non-numeric values and outliers |
-
----
-
-## 🛠️ Tools Used
-
-- PostgreSQL
-- SQL
-- Microsoft Excel
-
----
-
-## 📁 Project Structure
-
-```text
-sql-customer-dirty-data-generator/
-│
-├── SQL/
-│   └── customers_dirty_creation.sql
-│
-├── Data/
-│   ├── Raw/
-│   │   └── customers_dirty.csv
-│   │
-│   └── Clean/
-│       └── customers_clean.csv
-│
-├── cleaning/
-│   ├── clean_email.png
-│   ├── clean_phone.png
-│   ├── clean_city.png
-│   ├── clean_country.png
-│   ├── clean_date.png
-│   ├── clean_amount.png
-│   └── final_clean.png
-│
-└── README.md
-```
-
----
-
-# 1️⃣ SQL Data Generation
+# 1️⃣ SQL Dirty Data Generation
 
 ## Create Table
 
@@ -261,27 +90,108 @@ CREATE TABLE customers_dirty (
     signup_date TEXT,
     amount TEXT
 );
-```
-
-## Generate Dirty Data
-
-The dataset was intentionally populated with:
-
-- Invalid email addresses
-- Duplicate email records
-- Missing phone numbers
-- Incorrect phone formats
-- Inconsistent city capitalization
-- Incorrect country values
-- Mixed date formats
-- Text values in numeric fields
-- Numeric outliers
-
-using SQL `CASE WHEN` statements and `generate_series()`.
 
 ---
 
-## 📥 Raw Dataset
+## 📥 Insert Dirty Data
+
+The dataset was intentionally populated with common data quality issues using SQL `CASE WHEN` statements and `generate_series()`.
+
+```sql
+INSERT INTO customers_dirty (
+    name,
+    email,
+    phone,
+    city,
+    country,
+    signup_date,
+    amount
+)
+SELECT
+
+    -- Messy Names
+    CASE
+        WHEN i % 10 = 0 THEN '  Ali Khan  '
+        WHEN i % 7 = 0 THEN 'Sara Ahmed'
+        ELSE 'User ' || i
+    END,
+
+    -- Invalid Emails
+    CASE
+        WHEN i % 15 = 0 THEN 'invalidemail.com'
+        WHEN i % 9 = 0 THEN 'test@test.com'
+        ELSE 'user' || i || '@gmail.com'
+    END,
+
+    -- Invalid Phone Numbers
+    CASE
+        WHEN i % 12 = 0 THEN NULL
+        WHEN i % 5 = 0 THEN '123-456-789'
+        ELSE '03' || (100000000 + i)::TEXT
+    END,
+
+    -- Inconsistent Cities
+    CASE
+        WHEN i % 6 = 0 THEN 'karachi'
+        WHEN i % 8 = 0 THEN 'LAHORE'
+        WHEN i % 11 = 0 THEN ''
+        ELSE 'Islamabad'
+    END,
+
+    -- Wrong Countries
+    CASE
+        WHEN i % 10 = 0 THEN 'IND'
+        ELSE 'Pakistan'
+    END,
+
+    -- Mixed Date Formats
+    CASE
+        WHEN i % 13 = 0 THEN '12-05-2023'
+        ELSE '2023-01-' || ((i % 28)+1)
+    END,
+
+    -- Outliers & Invalid Amounts
+    CASE
+        WHEN i % 20 = 0 THEN '999999'
+        WHEN i % 17 = 0 THEN 'abc'
+        ELSE (100 + i)::TEXT
+    END
+
+FROM generate_series(1,500) i;
+```
+
+### Final Preview
+
+```sql
+SELECT *
+FROM customers_dirty;
+```
+
+### Raw Dataset
+
+[View Raw Dataset](Data/Raw/customers_dirty.csv)
+
+## Generate Dirty Data
+
+The dataset was intentionally populated using SQL `CASE WHEN` statements and `generate_series()` to simulate common real-world data quality issues.
+
+### Simulated Data Quality Issues
+
+| Column | Issues Introduced |
+|----------|----------|
+| Name | Extra spaces, repeated names |
+| Email | Invalid and duplicate emails |
+| Phone | Missing values and invalid formats |
+| City | Inconsistent capitalization and blank values |
+| Country | Incorrect country codes |
+| Signup Date | Mixed date formats |
+| Amount | Non-numeric values and outliers |
+
+### SQL Script
+
+`SQL/customers_dirty_creation.sql`
+
+### Raw Dataset
 
 [View Raw Dataset](Data/Raw/customers_dirty.csv)
 
@@ -313,13 +223,17 @@ using SQL `CASE WHEN` statements and `generate_series()`.
 
 - Removed extra spaces using `TRIM()`
 - Standardized name formatting
-- Verified duplicates using ID and Email
+- Verified repeated names using ID and Email
 
 ### Formula Used
 
 ```excel
 =TRIM(B2)
 ```
+
+### Cleaning Evidence
+
+![Name Cleaning](cleaning/trim(b2).png)
 
 ---
 
@@ -329,7 +243,6 @@ using SQL `CASE WHEN` statements and `generate_series()`.
 
 - Invalid email addresses
 - Duplicate email records
-- Test/Fake email addresses
 
 ### Examples
 
@@ -339,15 +252,8 @@ using SQL `CASE WHEN` statements and `generate_series()`.
 ### Actions Taken
 
 - Flagged invalid email formats
-- Identified test/fake emails
-- Created Email Status classification
-- Excluded invalid records from analysis
-
-### Email Status Categories
-
-- Valid
-- Invalid Format
-- Test/Fake Email
+- Identified duplicate email records
+- Excluded invalid records from analysis where necessary
 
 ### Cleaning Evidence
 
@@ -359,7 +265,7 @@ using SQL `CASE WHEN` statements and `generate_series()`.
 
 ### Issues Found
 
-- Invalid phone format
+- Invalid phone formats
 - Missing values
 
 ### Examples
@@ -369,41 +275,23 @@ using SQL `CASE WHEN` statements and `generate_series()`.
 
 ### Actions Taken
 
-- Removed invalid formatting
+- Standardized phone number formats
 - Converted NULL values to blanks
-- Validated phone number length
 - Flagged invalid phone records
 
 ### Cleaning Evidence
 
-![Phone Cleaning](cleaning/clean_phone.png)
+![Phone Cleaning](cleaning/clean_phone_1.png)
 
 ---
 
 ## Step 5: Clean City Column
-
-### Issues Found
-
-- Islamabad
-- karachi
-- LAHORE
-
-### Actions Taken
-
-- Standardized city names
-- Applied proper capitalization
 
 ### Formula Used
 
 ```excel
 =PROPER(E2)
 ```
-
-### Standardized Values
-
-- Islamabad
-- Karachi
-- Lahore
 
 ### Cleaning Evidence
 
@@ -413,22 +301,6 @@ using SQL `CASE WHEN` statements and `generate_series()`.
 
 ## Step 6: Clean Country Column
 
-### Issues Found
-
-- Pakistan
-- IND
-
-### Actions Taken
-
-- Standardized country names
-- Replaced abbreviations with full country names
-
-### Example
-
-| Before | After |
-|----------|----------|
-| IND | India |
-
 ### Cleaning Evidence
 
 ![Country Cleaning](cleaning/clean_country.png)
@@ -437,56 +309,22 @@ using SQL `CASE WHEN` statements and `generate_series()`.
 
 ## Step 7: Handle Missing City Values
 
-### Issues Found
-
-Blank city records.
-
 ### Actions Taken
 
-- Identified missing values
+- Identified missing city values
 - Replaced with "Unknown" where appropriate
 
 ---
 
 ## Step 8: Clean Amount Column
 
-### Issues Found
-
-Non-numeric values:
-
-- abc
-
-Outliers:
-
-- 999999
-
-### Actions Taken
-
-- Converted values to numeric format
-- Flagged non-numeric entries
-- Investigated extreme outliers
-
 ### Cleaning Evidence
 
-![Amount Cleaning](cleaning/clean_amount.png)
+![Amount Cleaning](cleaning/clean_amount_1.png)
 
 ---
 
 ## Step 9: Validate Date Column
-
-### Issues Found
-
-Mixed date formats.
-
-### Examples
-
-- 1/2/2023
-- 12/5/2023
-
-### Actions Taken
-
-- Converted all dates to a consistent format
-- Standardized dates using ISO format
 
 ### Final Format
 
@@ -500,7 +338,21 @@ YYYY-MM-DD
 
 ---
 
-## Step 10: Verify ID Column
+## Step 10: Check Duplicate Names
+
+### Issues Found
+
+- Sara Ahmed
+- Ali Khan
+
+### Actions Taken
+
+- Verified records using Email and ID
+- Confirmed repeated names were not duplicate customers
+
+---
+
+## Step 11: Verify ID Column
 
 ### Actions Taken
 
@@ -512,9 +364,7 @@ YYYY-MM-DD
 
 # 3️⃣ Cleaned Dataset
 
-After completing the cleaning process, a clean version of the dataset was created for analysis and reporting.
-
-[View Clean Dataset](Data/Clean/customers_clean.csv)
+[View Clean Dataset](Data/clean/customers_clean.csv)
 
 ### Final Output
 
@@ -522,16 +372,26 @@ After completing the cleaning process, a clean version of the dataset was create
 
 ---
 
-# ✅ Key Cleaning Outcomes
+## ✅ Key Outcomes
 
-- Removed leading and trailing spaces from text fields.
-- Identified invalid and duplicate email records.
-- Standardized phone number formats and handled missing values.
-- Corrected inconsistent city and country values.
+- Generated a realistic dirty customer dataset using SQL.
+- Identified and corrected data quality issues in Excel.
+- Removed leading and trailing spaces using `TRIM()`.
+- Flagged invalid and duplicate email records.
+- Standardized phone number, city, and country formats.
+- Handled missing values and inconsistent text entries.
 - Converted dates into a consistent format.
-- Validated numeric fields and flagged outliers.
-- Verified dataset integrity through duplicate and missing-value checks.
+- Validated numeric fields and investigated outliers.
+- Verified record integrity using ID and Email fields.
 - Produced a clean, analysis-ready customer dataset.
+
+---
+
+## 🛠️ Tools Used
+
+- PostgreSQL
+- SQL
+- Microsoft Excel
 
 ---
 
@@ -541,6 +401,7 @@ After completing the cleaning process, a clean version of the dataset was create
 - INSERT INTO
 - CASE WHEN
 - generate_series()
+- Data Quality Simulation
 
 ---
 
