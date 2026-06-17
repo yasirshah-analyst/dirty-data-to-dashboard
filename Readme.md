@@ -231,7 +231,7 @@ The dataset was intentionally populated using SQL `CASE WHEN` statements and `ge
 ### Issues Found
 
 - Invalid email addresses
-- Duplicate email records
+- Test/Fake Emails
 
 ### Examples
 
@@ -240,10 +240,14 @@ The dataset was intentionally populated using SQL `CASE WHEN` statements and `ge
 
 ### Actions Taken
 
-- Flagged invalid email formats
-- Identified duplicate email records
-- Excluded invalid records from analysis where necessary
+- Flagged invalid and Test/Fake email formats
 
+### Formula Used
+
+```excel
+=TRIM(B2)
+```
+  
 ### Cleaning Evidence
 
 ![Email Cleaning](cleaning/clean_email.png)
