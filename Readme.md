@@ -322,6 +322,13 @@ The dataset was intentionally populated using SQL `CASE WHEN` statements and `ge
 - Identified missing city values
 - Replaced with "Unknown" where appropriate
 
+```excel
+=PROPER(IF(F2="","Missing",F2))
+```
+
+### Cleaning Evidence
+![Country City](cleaning\clean_city.png)
+
 ---
 
 ## Step 8: Clean Amount Column
