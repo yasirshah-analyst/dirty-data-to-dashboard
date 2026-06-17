@@ -281,11 +281,11 @@ The dataset was intentionally populated using SQL `CASE WHEN` statements and `ge
 
 ![Phone Cleaning](cleaning/raw_phone_2.png)
 
-[Phone Cleaning](cleaning/raw_phone3.png)
+![Phone Cleaning](cleaning/raw_phone3.png)
 
-[Phone Cleaning](cleaning/clean_phone_1.png)
+![Phone Cleaning](cleaning/clean_phone_1.png)
 
-[Phone Cleaning](cleaning/clean_phone_f.png)
+![Phone Cleaning](cleaning/clean_phone_f.png)
 
 ---
 
