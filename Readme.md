@@ -483,13 +483,135 @@ Ensures consistent country naming for analysis.
 
 ---
 
-## Step 8: Clean Amount Column
+## Step 8: Clean and Validate Amount Column
+
+### Issues Identified
+
+- Non-numeric values
+- Potential outliers
+- Incorrect data types
+
+### Examples
+
+Invalid Values:
+
+```text
+abc
+```
+
+Potential Outliers:
+
+```text
+999999
+```
+
+### Formula Used
+
+```excel
+=IF(AND(ISNUMBER(I2),I2<10000),I2,"")
+```
+
+### Actions Taken
+
+- Identified valid numeric values
+- Removed non-numeric entries
+- Flagged extreme outliers
+- Converted text values to numeric format
+- Standardized decimal formatting
+
+### Why?
+
+The formula:
+
+```excel
+=IF(AND(ISNUMBER(I2),I2<10000),I2,"")
+```
+
+performs two validation checks:
+
+**1. Numeric Validation**
+
+```excel
+ISNUMBER(I2)
+```
+
+Checks whether the value is numeric.
+
+Examples:
+
+```text
+150   → Valid
+abc   → Invalid
+```
+
+**2. Outlier Validation**
+
+```excel
+I2 < 10000
+```
+
+Checks whether the amount falls within a reasonable range.
+
+Examples:
+
+```text
+450    → Valid
+999999 → Outlier
+```
+
+Only values that pass both conditions are retained.
+
+If either condition fails, the formula returns a blank value.
+
+This helps ensure that only valid transaction amounts are kept for analysis.
+
+### Data Type Conversion
+
+After validating the values, the Amount column was converted from **Text** to **Number** format.
+
+### Why?
+
+Numeric data types are required for:
+
+- SUM calculations
+- Averages
+- Revenue analysis
+- Pivot Tables
+- Charts and dashboards
+
+Without converting the data type, Excel may treat numbers as text and calculations may produce incorrect results.
+
+### Decimal Standardization
+
+After converting the column to a numeric data type, unnecessary decimal places were reduced.
+
+Example:
+
+```text
+125.000000 → 125
+250.500000 → 250.5
+```
+
+### Why?
+
+Reducing excessive decimal places:
+
+- Improves readability
+- Makes reports cleaner
+- Produces more professional dashboards
+- Prevents visual clutter
 
 ### Cleaning Evidence
 
+**Validation of Numeric Values and Outliers**
+
 ![Amount Cleaning](cleaning/clean_amount_1.png)
 
+**Conversion from Text to Number Data Type**
+
 ![Amount Cleaning](cleaning/clean_amount_2.png)
+
+**Standardized Decimal Formatting**
 
 ![Amount Cleaning](cleaning/clean_amount_3.png)
 
