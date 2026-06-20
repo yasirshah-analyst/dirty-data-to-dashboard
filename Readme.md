@@ -393,7 +393,17 @@ The formula:
 
 ---
 
-## Step 5: Clean City Column
+## Step 5: Standardize City Names
+
+### Issues Identified
+
+Different capitalization styles:
+
+```text
+karachi
+LAHORE
+Islamabad
+```
 
 ### Formula Used
 
@@ -401,10 +411,13 @@ The formula:
 =PROPER(IF(F2="","Missing",F2))
 ```
 
+### Why?
+
+Standardized text improves grouping, filtering, and reporting.
+
 ### Cleaning Evidence
 
 ![City Cleaning](cleaning/clean_city.png)
-
 ---
 
 ## Step 6: Clean Country Column
