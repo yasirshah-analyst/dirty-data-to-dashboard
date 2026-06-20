@@ -642,43 +642,41 @@ Consistent dates are required for trend analysis and reporting.
 
 ![Date Cleaning](cleaning/clean_date.png)
 
-
 ---
 
+# 3️⃣ Final Clean Dataset
 
-# 3️⃣ Cleaned Dataset
+After all cleaning steps were completed, the dataset became:
 
-[View Clean Dataset](Data/clean/customers_clean.csv)
+✅ Consistent
+
+✅ Standardized
+
+✅ Analysis-ready
 
 ### Final Output
 
-![Final Clean Dataset](cleaning/final_clean.png)
+![Final Dataset](cleaning/final_clean.png)
 
 ---
 
-## ✅ Key Outcomes
+# 📊 Data Quality Issues Resolved
 
-- Generated a realistic dirty customer dataset using SQL.
-- Identified and corrected data quality issues in Excel.
-- Removed leading and trailing spaces using `TRIM()`.
-- Flagged invalid and duplicate email records.
-- Standardized phone number, city, and country formats.
-- Handled missing values and inconsistent text entries.
-- Converted dates into a consistent format.
-- Validated numeric fields and investigated outliers.
-- Verified record integrity using ID and Email fields.
-- Produced a clean, analysis-ready customer dataset.
-
----
-
-## 🛠️ Tools Used
-
-- PostgreSQL
-- WPS Excel
+| Issue | Status |
+|---------|---------|
+| Leading Spaces | ✅ Fixed |
+| Invalid Emails | ✅ Flagged |
+| Missing Phones | ✅ Identified |
+| Invalid Phones | ✅ Flagged |
+| Inconsistent Cities | ✅ Standardized |
+| Incorrect Countries | ✅ Standardized |
+| Mixed Dates | ✅ Standardized |
+| Invalid Amounts | ✅ Investigated |
+| Missing Values | ✅ Handled |
 
 ---
 
-## 🧠 SQL Concepts Used
+# 🧠 SQL Concepts Used
 
 - CREATE TABLE
 - INSERT INTO
@@ -688,7 +686,26 @@ Consistent dates are required for trend analysis and reporting.
 
 ---
 
-## 👤 Author
+# 📈 Skills Demonstrated
+
+- Data Cleaning
+- Data Validation
+- Data Quality Assessment
+- Excel Functions
+- SQL Data Generation
+- Data Preparation
+- Business Data Standardization
+
+---
+
+# 🛠️ Tools Used
+
+- PostgreSQL
+- WPS Excel
+
+---
+
+# 👤 Author
 
 **Yasir Shah**
 
