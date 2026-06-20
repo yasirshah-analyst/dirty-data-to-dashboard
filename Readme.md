@@ -393,16 +393,22 @@ The formula:
 
 ---
 
-## Step 5: Standardize City Names
+## Step 5: Clean and Standardize City Names
 
 ### Issues Identified
 
-Different capitalization styles:
+- Inconsistent capitalization
+- Missing city values (blank cells)
+
+### Examples
+
+Before Cleaning:
 
 ```text
 karachi
 LAHORE
 Islamabad
+(blank)
 ```
 
 ### Formula Used
@@ -411,13 +417,59 @@ Islamabad
 =PROPER(IF(F2="","Missing",F2))
 ```
 
+### Actions Taken
+
+- Replaced blank city values with "Missing"
+- Standardized city names into Proper Case format
+
 ### Why?
 
-Standardized text improves grouping, filtering, and reporting.
+The formula performs two cleaning tasks:
+
+**1. Handle Missing Values**
+
+```excel
+IF(F2="","Missing",F2)
+```
+
+Checks whether the city cell is blank.
+
+If blank, it replaces the value with:
+
+```text
+Missing
+```
+
+This makes missing records easier to identify during analysis instead of leaving empty cells.
+
+**2. Standardize Text Format**
+
+```excel
+PROPER(...)
+```
+
+Converts city names into Proper Case.
+
+Examples:
+
+```text
+karachi   → Karachi
+LAHORE    → Lahore
+islamabad → Islamabad
+```
+
+Standardized city names improve:
+
+- Data consistency
+- Filtering and sorting
+- Pivot Tables
+- Grouping and aggregation
+- Dashboard reporting accuracy
 
 ### Cleaning Evidence
 
 ![City Cleaning](cleaning/clean_city.png)
+
 ---
 
 ## Step 6: Clean Country Column
