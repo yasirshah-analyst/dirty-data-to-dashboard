@@ -3,35 +3,65 @@
 ## 💼 Business Problem
 
 Organizations rely heavily on customer data for critical decision-making, including:
-* **Customer Analysis** & Segmentation
-* **Revenue Tracking** & Financial Forecasting
-* **Marketing Campaigns** & Retention Strategies
-* **Performance Dashboards** & Executive Reporting
+
+- **Customer Analysis** & Segmentation
+- **Revenue Tracking** & Financial Forecasting
+- **Marketing Campaigns** & Retention Strategies
+- **Performance Dashboards** & Executive Reporting
 
 ### The Challenge
-In real-world business environments, raw customer data is rarely pristine. It is frequently plagued by:
+
+In real-world business environments, raw customer data is rarely pristine. It is
+frequently plagued by:
 
 | Data Quality Issue | Business Impact |
-| :--- | :--- |
+|---|---|
 | ❌ **Inconsistent Entries** | Fragmented metrics and skewed totals |
 | ❌ **Incomplete Records** | Missing critical demographic or transactional context |
 | ❌ **Incorrect Formatting** | Broken data types (e.g., text in date fields) preventing automated pipelines |
 | ❌ **Invalid or Duplicate Values** | Artificial inflation of customer counts and wasted marketing spend |
 
-These issues lead to inaccurate reporting, flawed analytics, and unreliable business insights.
+These issues lead to inaccurate reporting, flawed analytics, and unreliable
+business insights.
 
 ---
 
 ## 🎯 Project Goal
-The goal of this project is to simulate a real-world, "dirty" customer dataset and execute an end-to-end transformation. By leveraging data cleaning and engineering best practices, this pipeline turns chaotic raw data into a clean, optimized, and analysis-ready source of truth suitable for reliable business reporting.
+
+The goal of this project is to simulate a real-world, "dirty" customer dataset
+and execute an end-to-end transformation. By leveraging data cleaning and
+engineering best practices, this pipeline turns chaotic raw data into a clean,
+optimized, and analysis-ready source of truth suitable for reliable business
+reporting.
+
+> **Scope note:** This project currently covers data generation and cleaning
+> (SQL + Excel). A Power BI dashboard for visualizing the cleaned dataset is a
+> planned next phase.
+
+---
+
+## ❓ Business Questions
+
+1. What proportion of customer records contain unusable contact information (invalid/missing email or phone)?
+2. How many records have inconsistent or missing city/country values that would break geographic reporting?
+3. How many transaction amounts are invalid or statistical outliers?
+4. What percentage of the raw dataset is fully clean and analysis-ready after processing?
+5. Which data quality issue affects the largest share of records, and should be prioritized in the source system?
+
+---
 
 ## 📌 Project Overview
 
 This project demonstrates an end-to-end data quality workflow using SQL and Excel.
 
-First, a dirty customer dataset containing common real-world data quality issues was generated in PostgreSQL using SQL scripts. The dataset was then exported to Excel, where a complete data cleaning process was performed to identify, correct, and validate data quality problems.
+First, a dirty customer dataset containing common real-world data quality
+issues was generated in PostgreSQL using SQL scripts. The dataset was then
+exported to Excel, where a complete data cleaning process was performed to
+identify, correct, and validate data quality problems.
 
-The project showcases both data generation and data cleaning skills commonly used by data analysts when preparing datasets for reporting, dashboard creation, and business analysis.
+The project showcases both data generation and data cleaning skills commonly
+used by data analysts when preparing datasets for reporting, dashboard
+creation, and business analysis.
 
 ---
 
@@ -48,7 +78,8 @@ The dataset contains customer information including:
 - Signup Date
 - Amount
 
-A total of **500 records** were generated with intentional data quality issues for cleaning practice.
+A total of **500 records** were generated with intentional data quality issues
+for cleaning practice.
 
 ---
 
@@ -88,15 +119,17 @@ sql-customer-dirty-data-generator/
 
 ---
 
-# 1️⃣ SQL Dirty Data Generation
+# Phase 1 — SQL: Dirty Data Generation
 
-## Create Table
+## Step 1: Create Table
 
 ### Purpose
 
 The first step was to create a table to store customer information.
 
-All fields were intentionally created as TEXT data types to allow insertion of invalid values, inconsistent formats, and other data quality issues without database restrictions.
+All fields were intentionally created as `TEXT` data types to allow insertion
+of invalid values, inconsistent formats, and other data quality issues without
+database restrictions.
 
 
 ```sql
@@ -114,19 +147,21 @@ CREATE TABLE customers_dirty (
 
 ---
 
-## 📥 Insert Dirty Data
+## Step 2: Insert Dirty Data
 
-To replicate real-world scenarios, a PostgreSQL script was used to generate 500 customer records.
-The dataset was intentionally designed with common data quality issues found in enterprise systems:
+To replicate real-world scenarios, a PostgreSQL script was used to generate
+500 customer records. The dataset was intentionally designed with common data
+quality issues found in enterprise systems:
 
-* inconsistent text formatting
-* invalid email addresses
-* missing phone numbers
-* incorrect country codes
-* mixed date formats
-* unrealistic financial values and outliers
+- inconsistent text formatting
+- invalid email addresses
+- missing phone numbers
+- incorrect country codes
+- mixed date formats
+- unrealistic financial values and outliers
 
-This simulates real challenges faced in CRM, sales, and customer analytics systems.
+This simulates real challenges faced in CRM, sales, and customer analytics
+systems.
 
 ### SQL Concept Used
 
@@ -736,4 +771,4 @@ After cleaning the dataset:
 
 **Yasir Shah**
 
-Data Analyst | SQL | Excel | Data Cleaning | Data Analytics
+Data Analyst | SQL | Excel
