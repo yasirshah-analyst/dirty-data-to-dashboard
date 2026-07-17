@@ -1,4 +1,4 @@
-# SQL Dirty Data Generation & Excel Data Cleaning Project
+# sql-excel-powerbi-data-quality-project
 
 ## 💼 Business Problem
 
