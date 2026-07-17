@@ -894,30 +894,18 @@ Country/City Mismatch Count found: **50**
 ### 💡 Key Insights
 
 **Data Quality:**
-> Raw customer data contained significant quality issues that would have distorted business reporting if used as-is. Raw revenue was overstated by approximately **___%** due to invalid and outlier amount entries. **___** records had invalid or test/fake email addresses, and **___** records had missing or invalid phone numbers. Additionally, a systematic data generation issue was found and corrected, where all records marked "India" actually contained Pakistani cities. After cleaning, the trustworthy customer base is **___** records with total revenue of **___**.
+> Raw customer data contained significant quality issues that would have distorted business reporting if used as-is. Raw revenue was overstated by approximately **99.38%%** due to invalid and outlier amount entries. **77** records had invalid or test/fake email addresses, and **133** records had missing or invalid phone numbers. Additionally, a systematic data generation issue was found and corrected, where all records marked "India" actually contained Pakistani cities. After cleaning, the trustworthy customer base is **500** records with total revenue of **156.395k**.
 
 **Customer & Revenue:**
-> **[City]** brings in the most total money, mainly because it has more customers. But **[Other City]** has fewer customers overall — yet each customer there spends more on average. This city has fewer customers today, but big room to grow.
+> **Islamabad** has the highest total revenue, driven by higher customer count. However, **Lahore** shows the highest average transaction value per customer. This tells us something useful: the city with the most money isn't always the city with more customers. **Lahore** might be worth more attention, since its customers are already spending more per person — growing that city could bring in even more revenue than just relying on **Islamabad**'s larger customer base.
 
 ---
 
 ### ✅ Recommendations
 
-1. Prioritize marketing and acquisition spend toward **[city with highest average value]**, where each customer generates more revenue on average.
-2. Tighten signup validation for phone and email fields, since these were the most common sources of unusable data.
-3. Fix the system so the country/city mix-up doesn't happen again — the underlying data generation logic should pair cities and countries correctly at the source.
-
----
-
-### 🖼️ Screenshots
-
-*(Add screenshots of Page 1, Page 2, and Page 3 here)*
-
-```
-![Data Quality Impact](screenshots/page1-data-quality-impact.png)
-![Customer & Revenue Insights](screenshots/page2-customer-revenue.png)
-![Insights & Recommendations](screenshots/page3-insights-recommendations.png)
-```
+1. Focus our marketing budget on **Lahore** city with highest average value , since customers there spend the most on average.
+2. Fix the signup page to check phone and email fields, since these two areas were our biggest sources of bad data.
+3. Investigate and fix the country/city data generation logic to prevent similar mismatches in future data collectio
 
 ---
 
