@@ -847,6 +847,8 @@ While building Page 2, a data issue was discovered that had not been caught duri
 
 Country/City Mismatch Count found: **50**
 
+![Power_Query](power_query/country_replace.png)
+
 ---
 
 ### Dashboard Structure
@@ -869,6 +871,8 @@ Compares the raw (dirty) dataset against the cleaned dataset side by side, to qu
 - Blank City Count: **34**
 - Country City Mismatch Count: **50**
 
+![Data Quality Impact](Dashboard/data_quality_impact.png)
+
 **Formula used for revenue overstatement:**
 ```
 (Raw Revenue − Clean Revenue) ÷ Raw Revenue × 100
@@ -888,6 +892,8 @@ Analyzes only the cleaned, trustworthy data to answer real business questions: w
 - Average Clean Transaction Value: **349.88**
 - City with highest total revenue: **Islamabad**
 - City with highest average transaction value: **Lahore**
+
+![Customer & Revenue Insights](Dashboard/Customer_and_revenue.png)
 
 ---
 
