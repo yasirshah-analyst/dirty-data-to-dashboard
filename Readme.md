@@ -747,26 +747,6 @@ After cleaning the dataset:
 * **Dataset became suitable** for business intelligence dashboards and KPI reporting
 👉 **This ensures that business stakeholders can make decisions based on clean and trustworthy data.**
 
-# 🧠 SQL Concepts Used
-
-- CREATE TABLE
-- INSERT INTO
-- CASE WHEN
-- generate_series()
-- Data Quality Simulation
-
----
-
-# 📈 Skills Demonstrated
-
-- Data Cleaning
-- Data Validation
-- Data Quality Assessment
-- Excel Functions
-- SQL Data Generation
-- Data Preparation
-- Business Data Standardization
-
 ---
 
 ## 📊 Phase 3: Power BI
@@ -929,7 +909,9 @@ Analyzes only the cleaned, trustworthy data to answer real business questions: w
 SQL (PostgreSQL) → Excel (data cleaning) → Power BI (Power Query + DAX + interactive reporting)
 
 ---
+
 This section documents the Power BI extension of the SQL + Excel data cleaning project — showing the complete analytics process from problem definition through business recommendations.
+
 ---
 
 # 👤 Author
@@ -937,3 +919,12 @@ This section documents the Power BI extension of the SQL + Excel data cleaning p
 **Yasir Shah**
 
 Data Analyst | SQL | Excel
+
+---
+
+## 📬 Connect with Me
+
+- www.linkedin.com/in/yasir-shah-2364183b3
+- shahyasir443@gmail.com
+
+---
