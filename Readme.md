@@ -918,7 +918,7 @@ This section documents the Power BI extension of the SQL + Excel data cleaning p
 
 **Yasir Shah**
 
-Data Analyst | SQL | Excel
+Data Analyst | SQL | Excel | Power BI
 
 ---
 
